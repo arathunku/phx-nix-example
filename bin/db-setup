@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ ! -d ${PGDATA} ]; then
+  initdb ${PGDATA}
+  createuser ${PGUSER} -ds || true
+  createdb ${PGDATABASE}
+fi
