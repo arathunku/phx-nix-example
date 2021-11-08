@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Sandbox false is set so that hex.pm could fetch packages
+nix build '.#image' --option sandbox false
+image=$(docker load < result | sed -n '$s/^Loaded image: //p')
+echo "Image ${image} available"
+unlink result

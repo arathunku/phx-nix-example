@@ -6,15 +6,18 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :demo_phx, DemoPhx.Repo,
-  database: Path.expand("../demo_phx_test.db", Path.dirname(__ENV__.file)),
-  pool_size: 5,
-  pool: Ecto.Adapters.SQL.Sandbox
+  username: "postgres",
+  password: "postgres",
+  database: "demo_phx_test#{System.get_env("MIX_TEST_PARTITION")}",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :demo_phx, DemoPhxWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "4U5WjV6/aC4sYUxYKxASfOiPQDu6UQBfuoLiZ4Rs+O/1C/OVI7i4MS3XizHeZux2",
+  secret_key_base: "96vRPDIg4E66fk0LzyR3mLJeUqIgaiq2REQb+Jy38iDmwGfft/FszJd8yHs36PYF",
   server: false
 
 # In test we don't send emails.

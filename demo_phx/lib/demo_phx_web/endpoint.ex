@@ -7,7 +7,7 @@ defmodule DemoPhxWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_demo_phx_key",
-    signing_salt: "8RBU1fon"
+    signing_salt: "mJ0PA5Uq"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]

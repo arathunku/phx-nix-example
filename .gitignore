@@ -1,3 +1,5 @@
 db
 .nix-mix
 .nix-hex
+.elixir_ls
+erl_crash.dump

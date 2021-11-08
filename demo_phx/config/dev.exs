@@ -2,9 +2,12 @@ import Config
 
 # Configure your database
 config :demo_phx, DemoPhx.Repo,
-  database: Path.expand("../demo_phx_dev.db", Path.dirname(__ENV__.file)),
-  pool_size: 5,
-  show_sensitive_data_on_connection_error: true
+  username: "postgres",
+  password: "postgres",
+  database: "demo_phx_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -19,7 +22,7 @@ config :demo_phx, DemoPhxWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "5gdjLclXOoiMKOFA0CiB2XJ57matJHYiMeD+BSB/tkrY66cp/kKSJ32iNnzwTlWf",
+  secret_key_base: "UtVhjWnrCb0o19jijpq0T+VTd0AlygnLZvVD+WhTp+DGs8yE3jNoIFXrb85gkzQa",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}

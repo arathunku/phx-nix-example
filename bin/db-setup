@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-if [ ! -d ${PGDATA} ]; then
-  initdb ${PGDATA}
-  createuser ${PGUSER} -ds || true
-  createdb ${PGDATABASE}
+if [ ! -d "${PGDATA}" ]; then
+  mkdir -p "${PGDATA}"
+  pg_ctl initdb -D "${PGDATA}"
+
+  # https://github.com/toraritte/shell.nixes/blob/b4ef525b74703b04b3f90de9a6f6419f2a201043/elixir-phoenix-postgres/shell.nix
+  HOST_COMMON="host\s\+all\s\+all"
+  sed -i "s|^$HOST_COMMON.*127.*$|host all all 0.0.0.0/0 trust|" "${PGDATA}/pg_hba.conf"
+  sed -i "s|^$HOST_COMMON.*::1.*$|host all all ::/0 trust|"      "${PGDATA}/pg_hba.conf"
+
+  touch "${PGDATA}/.first_run"
+else
+  echo "Postgres data directory already exists at ${PGDATA}"
 fi

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+dir=$(dirname "$0")
+$dir/db-setup
+
+pg_ctl                                                    \
+    -D $PGDATA                                            \
+    -l $PGDATA/postgres.log                               \
+    -o "-c unix_socket_directories='$PGDATA'"             \
+    -o "-c log_connections=on"                            \
+    start
+
+if [ -f "${PGDATA}/.first_run" ]; then
+    POSTGRES_USER="${PGUSER:-postgres}"
+    unset PGUSER
+
+    echo "Creating user... ${POSTGRES_USER}"
+    createuser "${POSTGRES_USER}" -ds
+    createdb "${PGDATABASE}"
+    rm "${PGDATA}/.first_run"
+fi

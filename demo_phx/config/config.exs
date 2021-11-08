@@ -15,7 +15,7 @@ config :demo_phx, DemoPhxWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: DemoPhxWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: DemoPhx.PubSub,
-  live_view: [signing_salt: "JnNChIng"]
+  live_view: [signing_salt: "hqO+17G7"]
 
 # Configures the mailer
 #
@@ -32,11 +32,12 @@ config :swoosh, :api_client, false
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.12.18",
+  path: System.get_env("ESBUILD_PATH"),
   default: [
     args:
       ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+    env: %{"NODE_PATH" => Path.expand(System.get_env("MIX_DEPS_PATH", "../deps"), __DIR__)}
   ]
 
 # Configures Elixir's Logger

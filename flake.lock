@@ -15,6 +15,22 @@
         "type": "github"
       }
     },
+    "mixOverlay": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1618817164,
+        "narHash": "sha256-dDAFMWC7j+8xa9GCsBZ9YBYlRUPNrEn8cIVlFULmnvc=",
+        "owner": "hauleth",
+        "repo": "nix-elixir",
+        "rev": "2686deb2b20d20367c2e98b007d1579ef83929f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hauleth",
+        "repo": "nix-elixir",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1635781173,
@@ -34,6 +50,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "mixOverlay": "mixOverlay",
         "nixpkgs": "nixpkgs"
       }
     }
