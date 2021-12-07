@@ -94,6 +94,12 @@ $ docker run --rm -e DATABASE_URL="$DATABASE_URL" -e SECRET_KEY_BASE="AAS+PPF6mk
 In the command above, you'll notice network mode `host` is used,
 this is because it connects to postgres instance running locally.
 
+## TODO
+
+- GitHub Actions CI
+- MacOS tests, including M1
+- Additional checks inside flake.nix
+
 
 --------------------------
 
