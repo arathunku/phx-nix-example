@@ -68,7 +68,7 @@ $ nix develop
 $ ls -a
 .envrc  .git  .gitignore  .nix-hex  .nix-mix  bin  demo_phx  flake.lock  flake.nix  nix  README.md
 ```
-Basic directiries are automatically created and now you have required dependencies in $PATH
+Basic directories are automatically created and now you have required dependencies in $PATH
 
 Let's create db and run tests
 ```bash
